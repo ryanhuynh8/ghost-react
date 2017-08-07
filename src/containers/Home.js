@@ -3,21 +3,28 @@
  */
 import React from 'react'
 import {push} from 'react-router-redux'
+import { Link } from 'react-router-dom'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import NavigationBar from './NavigationBar'
+import {Button} from 'react-materialize'
+import store from '../store'
+import { FETCH_SESSION_LIST } from '../store/actionTypes'
+
+const navigateAndFetchSession = () => {
+    store.dispatch(push('/sessionSelect'))
+    store.dispatch({type: FETCH_SESSION_LIST});
+};
 
 const Home = props => (
-    <div className="gh-viewport">
-        {/*<h1>Home</h1>*/}
-        {/*<p>Welcome home!</p>*/}
-        {/*<button onClick={() => props.changePage()}>Go to about page via redux</button>*/}
-        <NavigationBar/>
+    <div className="center-content">
+        <Button onClick={() => navigateAndFetchSession()}>
+            BOOK SESSION
+        </Button>
     </div>
 );
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    changePage: () => push('/about-us')
+
 }, dispatch);
 
 export default connect(

@@ -1,24 +1,27 @@
-.App {
-  text-align: center;
+.center-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+button a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+nav .brand-logo-header {
+    font-size: 1.2em;
 }
 
-.App-intro {
-  font-size: large;
+.close-button {
+    float:right;
+    margin-top:-10px;
+    margin-right:10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.card .card-title {
+    font-size: 14px;
+    color: black;
 }

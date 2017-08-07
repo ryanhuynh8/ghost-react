@@ -3,9 +3,9 @@
  */
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import blogInfo from './blogInfo'
+import sessionReducer from './sessionReducer'
 
 export default combineReducers({
     routing: routerReducer,
-    blogInfo
+    sessionReducer
 });

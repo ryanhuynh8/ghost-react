@@ -7,11 +7,14 @@ const sessionList = [
     { name: 'Coaching Session', description: '1 hour 30 minute Zoom Call'},
 ];
 
-export class ApiService {
-    getSessionList() {
+/* simulate AJAX calls */
+class MockApiService {
+    static getSessionList = () => {
         const self = this;
         return new Promise((resolve, reject) => {
             setTimeout(() => resolve(sessionList), 1000);
         });
     }
 }
+
+export default MockApiService = MockApiService;

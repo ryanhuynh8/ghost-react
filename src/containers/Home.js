@@ -8,23 +8,26 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Button} from 'react-materialize'
 import store from '../store'
-import { FETCH_SESSION_LIST } from '../store/actionTypes'
-
-const navigateAndFetchSession = () => {
-    store.dispatch(push('/sessionSelect'))
-    store.dispatch({type: FETCH_SESSION_LIST});
-};
+import { FETCH_SESSION_LIST_SUCCESS } from '../store/actionTypes'
+import MockApiService from '../services/ApiService'
 
 const Home = props => (
     <div className="center-content">
-        <Button onClick={() => navigateAndFetchSession()}>
+        <Button onClick={() => props.navigateAndFetchSession()}>
             BOOK SESSION
         </Button>
     </div>
 );
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const thisPush = push;
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+    navigateAndFetchSession: () => {
+        MockApiService.getSessionList().then(data => {
+            dispatch({type: FETCH_SESSION_LIST_SUCCESS, payload: data});
+        });
+        return push('/sessionSelect');
+    }
 }, dispatch);
 
 export default connect(

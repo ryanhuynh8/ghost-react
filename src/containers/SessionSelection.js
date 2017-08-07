@@ -10,7 +10,6 @@ import {Card, Col, Icon} from 'react-materialize'
 
 const SessionSelection = props => (
     <div>
-        { console.log(props) }
         <nav>
             <div className="nav-wrapper">
                 <Col s={12} className="brand-logo brand-logo-header">Select a Session</Col>
@@ -19,11 +18,15 @@ const SessionSelection = props => (
                 </Col>
             </div>
         </nav>
-        <Col m={6} s={12}>
-            <Card className="darken-1" title='Chemistry Session' textClassName='grey-text'>
-                15 minutes Zoom Call
-            </Card>
-        </Col>
+        { props.sessionList.length }
+        { props.sessionList.map(function(item, i) {
+            console.log(item);
+            <Col m={6} s={12}>
+                <Card className="darken-1" title='Chemistry Session' textClassName='grey-text'>
+                    15 minutes Zoom Call
+                </Card>
+            </Col>
+        })}
     </div>
 );
 
@@ -31,7 +34,11 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 }, dispatch);
 
+const mapStateToProps = state => ({
+    sessionList: state.sessionReducer.sessionList
+});
+
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(SessionSelection);

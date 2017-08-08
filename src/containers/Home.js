@@ -10,16 +10,23 @@ import {Button} from 'react-materialize'
 import store from '../store'
 import { FETCH_SESSION_LIST_SUCCESS } from '../store/actionTypes'
 import MockApiService from '../services/apiService'
+import { RouteTransition } from 'react-router-transition';
 
 const Home = props => (
-    <div className="center-content transition-item">
+    <RouteTransition
+        pathname={props.location.pathname}
+        atEnter={{ opacity: 0 }}
+        atLeave={{ opacity: 0 }}
+        atActive={{ opacity: 1 }}
+    >
+    <div className="center-content">
+        { console.log(props) }
         <Button onClick={() => props.navigateAndFetchSession()}>
             BOOK SESSION
         </Button>
     </div>
+    </RouteTransition>
 );
-
-const thisPush = push;
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     navigateAndFetchSession: () => {

@@ -6,10 +6,18 @@ import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Card, Col, Icon} from 'react-materialize'
+import { RouteTransition } from 'react-router-transition';
 
 
 const SessionSelection = props => (
-    <div className="transition-item">
+    <RouteTransition
+        pathname={props.location.pathname}
+        atEnter={{ translateX: 100 }}
+        atLeave={{ translateX: -100 }}
+        atActive={{ translateX: 0 }}
+        mapStyles={styles => ({ transform: `translateX(${styles.translateX}%)` })}
+    >
+    <div className="">
         <div className="nav-container">
             <nav>
                 <div className="nav-wrapper">
@@ -30,7 +38,7 @@ const SessionSelection = props => (
         })}
         </div>
     </div>
-
+    </RouteTransition>
 );
 
 const mapDispatchToProps = dispatch => bindActionCreators({

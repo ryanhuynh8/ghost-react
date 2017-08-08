@@ -11,6 +11,14 @@ button a {
     text-decoration: inherit; /* no underline */
 }
 
+.nav-container {
+    flex: 0 0 auto;
+}
+
+.session-list {
+    flex: 0 1 auto;
+}
+
 nav .brand-logo-header {
     font-size: 1.2em;
 }
@@ -25,3 +33,31 @@ nav .brand-logo-header {
     font-size: 14px;
     color: black;
 }
+
+.detail-page {
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 20px;
+    height: 100vh;
+    background-color: #03a9f4;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.detail-page.transition-appear {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+
+.detail-page .transition-appear.transition-appear-active {
+     opacity: 1;
+     transform: translate3d(0, 0, 0);
+ }
+.detail-page .transition-leave {
+     opacity: 1;
+     transform: translate3d(0, 0, 0);
+ }
+
+.detail-page.transition-leave.transition-leave-active {
+     opacity: 0;
+     transform: translate3d(100%, 0, 0);
+ }

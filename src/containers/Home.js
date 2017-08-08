@@ -9,10 +9,10 @@ import {connect} from 'react-redux'
 import {Button} from 'react-materialize'
 import store from '../store'
 import { FETCH_SESSION_LIST_SUCCESS } from '../store/actionTypes'
-import MockApiService from '../services/ApiService'
+import MockApiService from '../services/apiService'
 
 const Home = props => (
-    <div className="center-content">
+    <div className="center-content transition-item">
         <Button onClick={() => props.navigateAndFetchSession()}>
             BOOK SESSION
         </Button>

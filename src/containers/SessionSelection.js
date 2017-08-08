@@ -50,7 +50,7 @@ const selectSession = (session) => {
         dispatch({type: SELECT_SESSION, payload: session});
         dispatch({type: FETCH_SESSION_DAY_LIST});
         MockApiService.getDateList().then(data => {
-            dispatch({type: 'FETCH_SESSION_DAY_LIST_SUCCESS123', payload: data});
+            dispatch({type: FETCH_SESSION_DAY_LIST_SUCCESS, payload: data});
         });
         dispatch(push('/dateSelect'));
     }

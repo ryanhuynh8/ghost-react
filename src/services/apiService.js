@@ -17,13 +17,13 @@ const sessionList = [
 ];
 
 const dateList = [
-    { dayOfWeek: 'Monday', date: '3 July, 2017', available: 'am' },
-    { dayOfWeek: 'Tuesday', date: '4 July, 2017', available: 'am' },
-    { dayOfWeek: 'Wednesday', date: '5 July, 2017', available: 'am' },
-    { dayOfWeek: 'Thursday', date: '6 July, 2017', available: 'am' },
-    { dayOfWeek: 'Friday', date: '7 July, 2017', available: 'am' },
-    { dayOfWeek: 'Saturday', date: '8 July, 2017', available: 'am'},
-    { dayOfWeek: 'Sunday', date: '9 July, 2017', available: 'am' },
+    { dayOfWeek: 'Monday', date: '3 July, 2017', available: 'am / pm' },
+    { dayOfWeek: 'Tuesday', date: '4 July, 2017', available: 'am / pm' },
+    { dayOfWeek: 'Wednesday', date: '5 July, 2017', available: 'unavailable' },
+    { dayOfWeek: 'Thursday', date: '6 July, 2017', available: 'unavailable' },
+    { dayOfWeek: 'Friday', date: '7 July, 2017', available: 'am / pm' },
+    { dayOfWeek: 'Saturday', date: '8 July, 2017', available: 'unavailable'},
+    { dayOfWeek: 'Sunday', date: '9 July, 2017', available: 'am / pm' },
 
 ];
 

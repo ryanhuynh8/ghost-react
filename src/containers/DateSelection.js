@@ -6,16 +6,16 @@ import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Card, Col, Icon, Row} from 'react-materialize'
-import { RouteTransition } from 'react-router-transition';
+import {RouteTransition} from 'react-router-transition';
 
 
 const DateSelection = props => (
     <RouteTransition
         pathname={props.location.pathname}
-        atEnter={{ translateX: 100 }}
-        atLeave={{ translateX: -100 }}
-        atActive={{ translateX: 0 }}
-        mapStyles={styles => ({ transform: `translateX(${styles.translateX}%)` })}
+        atEnter={{translateX: 100}}
+        atLeave={{translateX: -100}}
+        atActive={{translateX: 0}}
+        mapStyles={styles => ({transform: `translateX(${styles.translateX}%)`})}
     >
         <div className="">
             <div className="nav-container">
@@ -26,7 +26,8 @@ const DateSelection = props => (
                         </Col>
                         <Col s={12} className="brand-logo session-detail">
                             <Row className="session-detail">{props.selectedSession.name}</Row>
-                            <Row className="session-detail grey-text text-lighten-1">{props.selectedSession.description}</Row>
+                            <Row
+                                className="session-detail grey-text text-lighten-5">{props.selectedSession.description}</Row>
                         </Col>
                         <Col offset="s10" className="close-button" onClick={() => props.navigateBackHome()}>
                             <Icon>close</Icon>
@@ -37,28 +38,30 @@ const DateSelection = props => (
             <div className="nav-container">
                 <nav>
                     <div className="nav-wrapper">
-                        <Col className="back-button" onClick={() => props.navigateBackSessionList()}>
-                            <Icon>arrow_back</Icon>
-                        </Col>
                         <Col s={12} className="brand-logo session-detail">
-                            <Row className="session-detail">{props.selectedSession.name}</Row>
-                            <Row className="session-detail grey-text text-lighten-1">{props.selectedSession.description}</Row>
-                        </Col>
-                        <Col offset="s10" className="close-button" onClick={() => props.navigateBackHome()}>
-                            <Icon>close</Icon>
+                            <Row className="session-detail">Select a Day</Row>
+                            <Row className="session-detail blue-text text-lighten-1">Timezone: GMT+1 (London)</Row>
                         </Col>
                     </div>
                 </nav>
             </div>
             <div className="session-list">
-                {/*{ props.sessionList.map((item, i) => {*/}
-                    {/*return <Col m={6} s={12} key={i}>*/}
-                        {/*<Card className="darken-1" title={item.name} textClassName='grey-text' >*/}
-                            {/*{item.description}*/}
-                            {/*<span className="session-price">{item.price ? '$' + item.price : ''}</span>*/}
-                        {/*</Card>*/}
-                    {/*</Col>*/}
-                {/*})}*/}
+                { props.dateList.map((item, i) => {
+                    if (item.available === 'unavailable')
+                        return <Col m={6} s={12} key={i}>
+                            <Card className="darken-1 disabled-card" title={item.dayOfWeek} textClassName='grey-text text-lighten-2'>
+                                {item.date}
+                                <span className="session-price">{item.available}</span>
+                            </Card>
+                        </Col>;
+                    else
+                        return <Col m={6} s={12} key={i}>
+                            <Card className="darken-1" title={item.dayOfWeek} textClassName='grey-text'>
+                                {item.date}
+                                <span className="session-price">{item.available}</span>
+                            </Card>
+                        </Col>
+                })}
             </div>
         </div>
     </RouteTransition>

@@ -58,3 +58,7 @@ nav .brand-logo-header {
     padding:20px;
     white-space: pre-wrap;
 }
+
+.disabled-card .card-title {
+    color: #e0e0e0 !important;
+}

@@ -7,6 +7,7 @@ import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from '../reducers'
 import thunk from 'redux-thunk';
+import { persistStore, autoRehydrate } from 'redux-persist'
 
 export const history = createHistory();
 
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 
 const composedEnhancers = compose(
     applyMiddleware(...middleware),
+    autoRehydrate(),
     ...enhancers
 );
 
@@ -35,5 +37,7 @@ const store = createStore(
     initialState,
     composedEnhancers
 );
+
+persistStore(store);
 
 export default store;

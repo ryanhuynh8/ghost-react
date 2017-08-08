@@ -7,7 +7,8 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Card, Col, Icon} from 'react-materialize'
 import { RouteTransition } from 'react-router-transition';
-
+import { SELECT_SESSION, FETCH_SESSION_DAY_LIST, FETCH_SESSION_DAY_LIST_SUCCESS }from '../store/actionTypes'
+import MockApiService from '../services/apiService'
 
 const SessionSelection = props => (
     <RouteTransition
@@ -22,6 +23,7 @@ const SessionSelection = props => (
             <nav>
                 <div className="nav-wrapper">
                     <Col s={12} className="brand-logo brand-logo-header">Select a Session</Col>
+
                     <Col offset="s10" className="close-button" onClick={() => props.navigateBackHome()}>
                         <Icon>close</Icon>
                     </Col>
@@ -31,8 +33,9 @@ const SessionSelection = props => (
         <div className="session-list">
         { props.sessionList.map((item, i) => {
             return <Col m={6} s={12} key={i}>
-                <Card className="darken-1" title={item.name} textClassName='grey-text' >
+                <Card className="darken-1" title={item.name} textClassName='grey-text' onClick={() => props.selectSession(item)}>
                     {item.description}
+                    <span className="session-price">{item.price ? '$' + item.price : ''}</span>
                 </Card>
             </Col>
         })}
@@ -41,8 +44,21 @@ const SessionSelection = props => (
     </RouteTransition>
 );
 
+const selectSession = (session) => {
+    console.log(session);
+    return dispatch => {
+        dispatch({type: SELECT_SESSION, payload: session});
+        dispatch({type: FETCH_SESSION_DAY_LIST});
+        MockApiService.getDateList().then(data => {
+            dispatch({type: 'FETCH_SESSION_DAY_LIST_SUCCESS123', payload: data});
+        });
+        dispatch(push('/dateSelect'));
+    }
+};
+
 const mapDispatchToProps = dispatch => bindActionCreators({
-    navigateBackHome: () => push('/')
+    selectSession,
+    navigateBackHome: () => push('/'),
 }, dispatch);
 
 const mapStateToProps = state => ({

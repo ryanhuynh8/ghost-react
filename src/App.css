@@ -23,10 +23,25 @@ nav .brand-logo-header {
     font-size: 1.2em;
 }
 
+.session-detail {
+    font-size: 1em !important;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    line-height: 18px;
+    text-align: center
+}
+
+.back-button {
+    float:left;
+    margin-top:-5px;
+    margin-left:5px;
+}
+
 .close-button {
     float:right;
-    margin-top:-10px;
+    margin-top:-5px;
     margin-right:10px;
+
 }
 
 .card .card-title {
@@ -34,30 +49,12 @@ nav .brand-logo-header {
     color: black;
 }
 
-.detail-page {
-    overflow: auto;
-    box-sizing: border-box;
-    padding: 20px;
-    height: 100vh;
-    background-color: #03a9f4;
-    transition: transform 0.5s, opacity 0.5s;
+.session-price {
+    float: right;
 }
 
-.detail-page.transition-appear {
-        opacity: 0;
-        transform: translate3d(100%, 0, 0);
-    }
-
-.detail-page .transition-appear.transition-appear-active {
-     opacity: 1;
-     transform: translate3d(0, 0, 0);
- }
-.detail-page .transition-leave {
-     opacity: 1;
-     transform: translate3d(0, 0, 0);
- }
-
-.detail-page.transition-leave.transition-leave-active {
-     opacity: 0;
-     transform: translate3d(100%, 0, 0);
- }
+.multiline
+{
+    padding:20px;
+    white-space: pre-wrap;
+}

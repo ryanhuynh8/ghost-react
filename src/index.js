@@ -7,13 +7,16 @@ import { Provider } from 'react-redux'
 import {ConnectedRouter} from 'react-router-redux'
 import { Route, Link } from 'react-router-dom'
 import store, { history } from './store'
+import ScrollToTop from './ScrollToTop'
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <ConnectedRouter history={history} onUpdate={() => window.scrollTo(0, 0)}>
             <div>
-                <App />
+                <ScrollToTop>
+                    <App />
+                </ScrollToTop>
             </div>
-    </ConnectedRouter>
+        </ConnectedRouter>
     </Provider>, document.getElementById('root'));
 registerServiceWorker();

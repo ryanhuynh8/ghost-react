@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom'
 import './App.css'
 import Home from './containers/Home'
 import SessionSelection from './containers/SessionSelection'
+import DateSelection from './containers/DateSelection'
 
 class App extends Component {
     render() {
@@ -14,6 +15,7 @@ class App extends Component {
                 <main>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/sessionSelect" component={SessionSelection} />
+                    <Route exact path="/dateSelect" component={DateSelection} />
                 </main>
             </div>
         );

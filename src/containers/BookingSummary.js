@@ -1,15 +1,15 @@
 /**
- * Created by huyhuynh on 8/9/17.
+ * Created by hideki on 9/8/17.
  */
 import React from 'react'
 import {push} from 'react-router-redux'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Card, Col, Icon, Row, Input} from 'react-materialize'
+import {Card, Col, Icon, Row, Input, Button} from 'react-materialize'
 import {RouteTransition} from 'react-router-transition';
 import {SELECT_DATE, FETCH_TIME_LIST, UPDATE_TIME_FORMAT, SELECT_TIME} from '../store/actionTypes'
 
-const TimeSelection = props => (
+const BookingSummary = props => (
     <RouteTransition
         pathname={props.location.pathname}
         atEnter={{translateX: 100}}
@@ -21,7 +21,7 @@ const TimeSelection = props => (
             <div className="nav-container">
                 <nav className="big-nav">
                     <div className="nav-wrapper">
-                        <Col className="back-button" onClick={() => props.navigateBackDateList()}>
+                        <Col className="back-button" onClick={() => props.navigateBackTimeList()}>
                             <Icon>arrow_back</Icon>
                         </Col>
                         <Col s={12} className="brand-logo session-detail">
@@ -35,60 +35,37 @@ const TimeSelection = props => (
                     </div>
                 </nav>
             </div>
-            <div className="nav-container">
-                <nav className="big-nav">
+            <div className="nav-container full-nav">
+                <nav className="full-nav">
                     <div className="nav-wrapper">
                         <Col s={12} className="brand-logo session-detail">
-                            <Row className="session-detail">Select a Day</Row>
+                            <Row className="session-detail large-text">{ props.selectedTime.time }</Row>
                             <Row className="small-text session-detail yellow-text text-lighten-1">Timezone: GMT+1 (London)</Row>
-                            <Row className="session-detail">
-                                <Input name='abc' onLabel="24 hour" offLabel="am / pm" type='switch' value='1' onClick={() => props.updateTimeFormat()} />
+                            <p />
+                            <Row>
+                                <Button className="booking-btn white black-text" onClick={() => props.navigateBackHome()}>CANCEL</Button>
+                                <Button className="booking-btn blue white-text" onClick={() => props.navigateBackHome()}>BOOK</Button>
                             </Row>
                         </Col>
                     </div>
                 </nav>
             </div>
-            <div className="session-list">
-                { props.timeList.map((item, i) => {
-                    return <Col m={6} s={12} key={i}>
-                        <Card className="darken-1 time-card" title={item.time} textClassName='grey-text' onClick={() => props.selectTime(item)}/>
-                    </Col>
-                })}
-            </div>
         </div>
     </RouteTransition>
 );
 
-const selectTime = (time) => {
-    return dispatch => {
-        dispatch({type: SELECT_TIME, payload: time});
-        dispatch(push('/bookingSummary'));
-    }
-};
-
-let is24Hour = false;
-
-const updateTimeFormat = () => {
-    is24Hour = !is24Hour;
-    return dispatch => {
-        dispatch({type: FETCH_TIME_LIST, payload: is24Hour});
-    }
-};
-
 const mapDispatchToProps = dispatch => bindActionCreators({
     navigateBackHome: () => push('/'),
-    navigateBackDateList: () => push('/dateSelect'),
-    updateTimeFormat,
-    selectTime
+    navigateBackTimeList: () => push('/timeSelect'),
 }, dispatch);
 
 const mapStateToProps = state => ({
-    timeList: state.timeReducer.timeList,
     selectedDate: state.dateReducer.selectedDate,
-    selectedSession: state.sessionReducer.selectedSession
+    selectedSession: state.sessionReducer.selectedSession,
+    selectedTime: state.timeReducer.selectedTime
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(TimeSelection);
+)(BookingSummary);

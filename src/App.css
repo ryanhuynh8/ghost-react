@@ -79,10 +79,23 @@ nav .brand-logo-header {
     height: 90px;
 }
 
+.full-nav {
+    height: 100vh;
+}
+
 .small-text {
     font-size: 0.9em !important;
 }
 
+.large-text {
+    font-size: 1.5em !important;
+}
+
 .switch label {
     color: white;
+}
+
+.booking-btn {
+    margin-left: 10px;
+    margin-right: 10px;
 }

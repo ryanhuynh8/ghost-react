@@ -42,18 +42,18 @@ const timeList = [
 ];
 
 const timeList24hr = [
-    {time: '8:00 am'},
-    {time: '8:15 am'},
-    {time: '8:30 am'},
-    {time: '8:45 am'},
-    {time: '9:00 am'},
-    {time: '9:15 am'},
-    {time: '10:00 am'},
-    {time: '10:30 am'},
-    {time: '13:00 pm'},
-    {time: '13:45 pm'},
-    {time: '18:00 pm'},
-    {time: '18:15 pm'},
+    {time: '8:00'},
+    {time: '8:15'},
+    {time: '8:30'},
+    {time: '8:45'},
+    {time: '9:00'},
+    {time: '9:15'},
+    {time: '10:00'},
+    {time: '10:30'},
+    {time: '13:00'},
+    {time: '13:45'},
+    {time: '18:00'},
+    {time: '18:15'},
 ];
 
 /* simulate AJAX calls */

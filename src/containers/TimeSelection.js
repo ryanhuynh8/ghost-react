@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Card, Col, Icon, Row, Input} from 'react-materialize'
 import {RouteTransition} from 'react-router-transition';
-import {SELECT_DATE, FETCH_TIME_LIST} from '../store/actionTypes'
+import {SELECT_DATE, FETCH_TIME_LIST, UPDATE_TIME_FORMAT} from '../store/actionTypes'
 
 const TimeSelection = props => (
     <RouteTransition
@@ -68,8 +68,12 @@ const selectDate = (date) => {
     }
 };
 
+let is24Hour = false;
 const updateTimeFormat = () => {
-    alert('haha');
+    is24Hour = !is24Hour;
+    return dispatch => {
+        dispatch({type: FETCH_TIME_LIST, payload: is24Hour});
+    }
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({

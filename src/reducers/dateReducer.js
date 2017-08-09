@@ -1,10 +1,11 @@
 /**
  * Created by huyhuynh on 8/8/17.
  */
-import { FETCH_SESSION_DAY_LIST_SUCCESS } from '../store/actionTypes'
+import { FETCH_SESSION_DAY_LIST_SUCCESS, SELECT_DATE } from '../store/actionTypes'
 
 const initialState = {
-    dateList: []
+    dateList: [],
+    selectedDate: {}
 };
 
 export default (state = initialState, action) => {
@@ -13,6 +14,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 dateList: action.payload
+            };
+        case SELECT_DATE:
+            return {
+                ...state,
+                selectedDate: action.payload
             };
         default:
             return state;

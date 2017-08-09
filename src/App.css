@@ -70,3 +70,19 @@ nav .brand-logo-header {
 .disabled-card .card-title {
     color: #e0e0e0 !important;
 }
+
+.time-card {
+    text-align: center;
+}
+
+.big-nav {
+    height: 90px;
+}
+
+.small-text {
+    font-size: 0.9em !important;
+}
+
+.switch label {
+    color: white;
+}

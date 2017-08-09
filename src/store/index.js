@@ -11,6 +11,7 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 import createSagaMiddleware from 'redux-saga'
 import dateSaga from '../sagas/dateSaga'
 import sessionSaga from '../sagas/sessionSaga'
+import timeSaga from '../sagas/timeSaga'
 
 export const history = createHistory();
 
@@ -46,6 +47,7 @@ const store = createStore(
 
 sagaMiddleware.run(dateSaga);
 sagaMiddleware.run(sessionSaga);
+sagaMiddleware.run(timeSaga);
 
 persistStore(store);
 

@@ -24,7 +24,36 @@ const dateList = [
     { dayOfWeek: 'Friday', date: '7 July, 2017', available: 'am / pm' },
     { dayOfWeek: 'Saturday', date: '8 July, 2017', available: 'unavailable'},
     { dayOfWeek: 'Sunday', date: '9 July, 2017', available: 'am / pm' },
+];
 
+const timeList = [
+    {time: '8:00 am'},
+    {time: '8:15 am'},
+    {time: '8:30 am'},
+    {time: '8:45 am'},
+    {time: '9:00 am'},
+    {time: '9:15 am'},
+    {time: '10:00 am'},
+    {time: '10:30 am'},
+    {time: '1:00 pm'},
+    {time: '1:45 pm'},
+    {time: '6:00 pm'},
+    {time: '6:15 pm'},
+];
+
+const timeList24hr = [
+    {time: '8:00 am'},
+    {time: '8:15 am'},
+    {time: '8:30 am'},
+    {time: '8:45 am'},
+    {time: '9:00 am'},
+    {time: '9:15 am'},
+    {time: '10:00 am'},
+    {time: '10:30 am'},
+    {time: '13:00 pm'},
+    {time: '13:45 pm'},
+    {time: '18:00 pm'},
+    {time: '18:15 pm'},
 ];
 
 /* simulate AJAX calls */
@@ -39,5 +68,17 @@ export default class MockApiService {
         return new Promise((resolve, reject) => {
             setTimeout(() => resolve(dateList), 100);
         });
-    }
+    };
+
+    static getTimeList = (is24Hour) => {
+        if (is24Hour) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve(timeList24hr), 100);
+            });
+        } else {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve(timeList), 100);
+            });
+        }
+    };
 }

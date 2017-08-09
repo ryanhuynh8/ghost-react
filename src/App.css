@@ -23,6 +23,10 @@ nav .brand-logo-header {
     font-size: 1.2em;
 }
 
+.brand-logo {
+    left: 50%;
+    transform: translateX(-50%);
+}
 .session-detail {
     font-size: 1em !important;
     margin-top: 5px;
@@ -47,6 +51,10 @@ nav .brand-logo-header {
 .card .card-title {
     font-size: 14px;
     color: black;
+}
+
+.card {
+    margin: 0;
 }
 
 .session-price {

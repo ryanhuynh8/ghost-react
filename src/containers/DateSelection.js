@@ -40,7 +40,7 @@ const DateSelection = props => (
                     <div className="nav-wrapper">
                         <Col s={12} className="brand-logo session-detail">
                             <Row className="session-detail">Select a Day</Row>
-                            <Row className="session-detail blue-text text-lighten-1">Timezone: GMT+1 (London)</Row>
+                            <Row className="session-detail yellow-text text-lighten-1">Timezone: GMT+1 (London)</Row>
                         </Col>
                     </div>
                 </nav>

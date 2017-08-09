@@ -8,7 +8,6 @@ import {connect} from 'react-redux'
 import {Card, Col, Icon} from 'react-materialize'
 import { RouteTransition } from 'react-router-transition';
 import { SELECT_SESSION, FETCH_SESSION_DAY_LIST, FETCH_SESSION_DAY_LIST_SUCCESS }from '../store/actionTypes'
-import MockApiService from '../services/apiService'
 
 const SessionSelection = props => (
     <RouteTransition
@@ -49,9 +48,6 @@ const selectSession = (session) => {
     return dispatch => {
         dispatch({type: SELECT_SESSION, payload: session});
         dispatch({type: FETCH_SESSION_DAY_LIST});
-        MockApiService.getDateList().then(data => {
-            dispatch({type: FETCH_SESSION_DAY_LIST_SUCCESS, payload: data});
-        });
         dispatch(push('/dateSelect'));
     }
 };

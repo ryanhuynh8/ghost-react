@@ -9,7 +9,6 @@ import {connect} from 'react-redux'
 import {Button} from 'react-materialize'
 import store from '../store'
 import { FETCH_SESSION_LIST, FETCH_SESSION_LIST_SUCCESS } from '../store/actionTypes'
-import MockApiService from '../services/apiService'
 import { RouteTransition } from 'react-router-transition';
 
 const Home = props => (
@@ -31,9 +30,6 @@ const Home = props => (
 const mapDispatchToProps = dispatch => bindActionCreators({
     navigateAndFetchSession: () => {
         dispatch({type: FETCH_SESSION_LIST});
-        MockApiService.getSessionList().then(data => {
-            dispatch({type: FETCH_SESSION_LIST_SUCCESS, payload: data});
-        });
         return push('/sessionSelect');
     }
 }, dispatch);

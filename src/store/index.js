@@ -8,14 +8,20 @@ import createHistory from 'history/createBrowserHistory'
 import rootReducer from '../reducers'
 import thunk from 'redux-thunk';
 import { persistStore, autoRehydrate } from 'redux-persist'
+import createSagaMiddleware from 'redux-saga'
+import dateSaga from '../sagas/dateSaga'
+import sessionSaga from '../sagas/sessionSaga'
 
 export const history = createHistory();
+
+const sagaMiddleware = createSagaMiddleware();
 
 const initialState = { };
 const enhancers = [];
 const middleware = [
     routerMiddleware(history),
-    thunk
+    thunk,
+    sagaMiddleware
 ];
 
 if (process.env.NODE_ENV === 'development') {
@@ -37,6 +43,9 @@ const store = createStore(
     initialState,
     composedEnhancers
 );
+
+sagaMiddleware.run(dateSaga);
+sagaMiddleware.run(sessionSaga);
 
 persistStore(store);
 

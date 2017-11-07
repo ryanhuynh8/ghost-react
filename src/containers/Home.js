@@ -12,6 +12,7 @@ import { FETCH_SESSION_LIST, FETCH_SESSION_LIST_SUCCESS } from '../store/actionT
 import { RouteTransition } from 'react-router-transition'
 import Config from '../config'
 import i18n from '../i18n'
+import Features from '../featuresList'
 
 const Home = props => (
     <RouteTransition
@@ -29,11 +30,11 @@ const Home = props => (
             { i18n.buttons.internetBanking }
         </Button>
         &nbsp;
-        <Button onClick={() => props.navigateAndFetchSession()} style={{textTransform: 'none'}}>
+        <Button onClick={() => props.navigatePayment()} style={{textTransform: 'none'}}>
             { i18n.buttons.payment }
         </Button>
         &nbsp;
-        <Button onClick={() => props.navigateAndFetchSession()} style={{textTransform: 'none'}}>
+        <Button onClick={() => props.navigateFundTransfer()} style={{textTransform: 'none'}}>
             { i18n.buttons.fundTransfer }
         </Button>
         &nbsp;
@@ -48,6 +49,26 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     navigateAndFetchSession: () => {
         dispatch({type: FETCH_SESSION_LIST});
         return push('/sessionSelect');
+    },
+
+    navigatePayment: () => {
+        if (Features.payment) {
+            alert('Welcome to Payment');
+        } else {
+            alert('This feature is not enabled for this country.')
+        }
+
+        return null;
+    },
+
+    navigateFundTransfer: () => {
+        if (Features.fundTransfer) {
+            alert('Welcome to Fund Transfer')
+        } else {
+            alert('This feature is not enabled for this country.')
+        }
+
+        return null;
     }
 }, dispatch);
 

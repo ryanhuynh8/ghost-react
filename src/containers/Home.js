@@ -9,7 +9,9 @@ import {connect} from 'react-redux'
 import {Button} from 'react-materialize'
 import store from '../store'
 import { FETCH_SESSION_LIST, FETCH_SESSION_LIST_SUCCESS } from '../store/actionTypes'
-import { RouteTransition } from 'react-router-transition';
+import { RouteTransition } from 'react-router-transition'
+import Config from '../config'
+import i18n from '../i18n'
 
 const Home = props => (
     <RouteTransition
@@ -19,9 +21,24 @@ const Home = props => (
         atActive={{ opacity: 1 }}
     >
     <div className="center-content">
-        { console.log(props) }
-        <Button onClick={() => props.navigateAndFetchSession()}>
-            BOOK SESSION
+        Internet Banking System for { Config.country }
+        <br />
+        The currency is { Config.currency }
+        <br />
+        <Button onClick={() => props.navigateAndFetchSession()} style={{textTransform: 'none'}}>
+            { i18n.buttons.internetBanking }
+        </Button>
+        &nbsp;
+        <Button onClick={() => props.navigateAndFetchSession()} style={{textTransform: 'none'}}>
+            { i18n.buttons.payment }
+        </Button>
+        &nbsp;
+        <Button onClick={() => props.navigateAndFetchSession()} style={{textTransform: 'none'}}>
+            { i18n.buttons.fundTransfer }
+        </Button>
+        &nbsp;
+        <Button onClick={() => props.navigateAndFetchSession()} style={{textTransform: 'none'}}>
+            { i18n.buttons.transactionHistory }
         </Button>
     </div>
     </RouteTransition>

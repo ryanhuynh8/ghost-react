@@ -5,9 +5,6 @@ import { Provider } from 'react-redux'
 import { Route, Link } from 'react-router-dom'
 import './App.css'
 import Home from './containers/Home'
-import SessionSelection from './containers/SessionSelection'
-import DateSelection from './containers/DateSelection'
-import TimeSelection from './containers/TimeSelection'
 import BookingSummary from './containers/BookingSummary'
 
 class App extends Component {
@@ -16,9 +13,6 @@ class App extends Component {
             <div>
                 <main>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/sessionSelect" component={SessionSelection} />
-                    <Route exact path="/dateSelect" component={DateSelection} />
-                    <Route exact path="/timeSelect" component={TimeSelection} />
                     <Route exact path="/bookingSummary" component={BookingSummary} />
                 </main>
             </div>

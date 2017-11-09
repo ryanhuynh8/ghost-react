@@ -1,6 +1,8 @@
 /**
  * Created by huyhuynh on 8/7/17.
  */
+import axios from 'axios';
+
 const sessionList = [
     { name: 'Chemistry Session', description: '15 minute Zoom Call'},
     { name: 'Contracting Session', description: '1 hour Zoom Call'},
@@ -81,4 +83,8 @@ export default class MockApiService {
             });
         }
     };
+
+    static login(payload) {
+        return axios.post('http://spring-wood-8022.getsandbox.com/login', payload);
+    }
 }

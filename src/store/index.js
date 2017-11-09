@@ -12,6 +12,7 @@ import createSagaMiddleware from 'redux-saga'
 import dateSaga from '../sagas/dateSaga'
 import sessionSaga from '../sagas/sessionSaga'
 import timeSaga from '../sagas/timeSaga'
+import authSaga from '../sagas/authSaga'
 
 export const history = createHistory();
 
@@ -21,7 +22,6 @@ const initialState = { };
 const enhancers = [];
 const middleware = [
     routerMiddleware(history),
-    thunk,
     sagaMiddleware
 ];
 
@@ -48,6 +48,7 @@ const store = createStore(
 sagaMiddleware.run(dateSaga);
 sagaMiddleware.run(sessionSaga);
 sagaMiddleware.run(timeSaga);
+sagaMiddleware.run(authSaga);
 
 persistStore(store);
 
